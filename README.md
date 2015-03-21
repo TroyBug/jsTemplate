@@ -1,6 +1,6 @@
 # 一个简单的js模板引擎
 ```javascript
-<script src="tpTemplate.js"></script>
+<script src="tpEngine.js"></script>
 
 <script id="tpl" type="text/plain">
  		<h1>{title}</h1>
