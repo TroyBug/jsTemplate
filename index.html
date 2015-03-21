@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 引用模板js -->
+	<script src="tpEngine.js"></script>
+</head>
+<body>
+	<div id="txt"></div>
+	<!-- 将html模板放在script标签内 -->
+	<script id="tpl" type="text/plain">
+ 		<h1>{title}</h1>
+ 		<ul>
+ 			<% if (this.title) {%>
+	 			<% for(var i = 0; i < this.list.length; i++) { %>
+	 				<li>{list[i]}</li>
+	 			<% } %>
+	 		<% } else {%>
+	 			{title}
+	 		<%} %>
+ 		</ul>
+	</script>
+	<script>
+		var txt = document.getElementById('txt'),	//容器ID
+			tpl = document.getElementById('tpl'),	//模板ID
+			tplTxt = tpl.innerHTML,					//模板内部文本
+			t = new TempLate(tplTxt),				//实例化
+			model = {
+	 			title:'欢迎使用jsTemplate',
+			    list:[
+			        'test1:1',
+			        'test2:2',
+			        'test3:3',
+			        'test4:4'
+			    ]
+	 		},
+			html = t.render(model);	//生成html文本
+
+		txt.innerHTML = html;	//放入目标容器
+	</script>
+</body>
+</html>
